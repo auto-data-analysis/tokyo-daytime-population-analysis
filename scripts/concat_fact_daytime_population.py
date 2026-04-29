@@ -37,5 +37,5 @@ print(df_all.head(3).to_string())
 
 # --- 保存 ---
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
-df_all.to_csv(OUTPUT_DIR / "fact_daytime_population.csv", index=False)
+df_all.to_csv(OUTPUT_DIR / "fact_daytime_population.csv", index=False, encoding="utf-8")
 print("\n保存完了: fact_daytime_population.csv")

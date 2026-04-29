@@ -71,7 +71,7 @@ ORDER BY 増加幅_pt ASC
 
 df1 = duckdb.execute(sql1, [MASTER_PATH, INDUSTRY_PATH]).df()
 OUT1_PATH.parent.mkdir(parents=True, exist_ok=True)
-df1.to_csv(OUT1_PATH, index=False)
+df1.to_csv(OUT1_PATH, index=False, encoding="utf-8")
 print(f"出力完了: {OUT1_PATH}")
 print(df1.to_string(index=False))
 print()
@@ -116,6 +116,6 @@ ORDER BY 地域, CAST(産業分類並び順 AS INTEGER)
 
 df2 = duckdb.execute(sql2, [MASTER_PATH, INDUSTRY_PATH]).df()
 OUT2_PATH.parent.mkdir(parents=True, exist_ok=True)
-df2.to_csv(OUT2_PATH, index=False)
+df2.to_csv(OUT2_PATH, index=False, encoding="utf-8")
 print(f"出力完了: {OUT2_PATH}")
 print(df2.to_string(index=False))

@@ -61,7 +61,7 @@ ORDER BY 増減 ASC
 df = duckdb.execute(sql, [MASTER_PATH, STUDENTS_PATH]).df()
 
 OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-df.to_csv(OUTPUT_PATH, index=False)
+df.to_csv(OUTPUT_PATH, index=False, encoding="utf-8")
 
 print(f"出力完了: {OUTPUT_PATH}")
 print(f"レコード数: {len(df)}")

@@ -154,7 +154,11 @@ print(toshima.to_string())
 output_dir = Path("opendata/processed")
 output_dir.mkdir(parents=True, exist_ok=True)
 
-fact_h27.to_csv(output_dir / "fact_commuter_origin_2015.csv", index=False)
-fact_r2.to_csv(output_dir / "fact_commuter_origin_2020.csv", index=False)
-fact_all.to_csv(output_dir / "fact_commuter_origin.csv", index=False)
+fact_h27.to_csv(
+    output_dir / "fact_commuter_origin_2015.csv", index=False, encoding="utf-8"
+)
+fact_r2.to_csv(
+    output_dir / "fact_commuter_origin_2020.csv", index=False, encoding="utf-8"
+)
+fact_all.to_csv(output_dir / "fact_commuter_origin.csv", index=False, encoding="utf-8")
 print("\n保存完了")

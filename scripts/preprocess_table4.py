@@ -123,7 +123,11 @@ print(f"\n欠損値:\n{fact_all.isnull().sum()}")
 output_dir = Path("opendata/processed")
 output_dir.mkdir(parents=True, exist_ok=True)
 
-fact_h27.to_csv(output_dir / "fact_flow_population_2015.csv", index=False)
-fact_r2.to_csv(output_dir / "fact_flow_population_2020.csv", index=False)
-fact_all.to_csv(output_dir / "fact_flow_population.csv", index=False)
+fact_h27.to_csv(
+    output_dir / "fact_flow_population_2015.csv", index=False, encoding="utf-8"
+)
+fact_r2.to_csv(
+    output_dir / "fact_flow_population_2020.csv", index=False, encoding="utf-8"
+)
+fact_all.to_csv(output_dir / "fact_flow_population.csv", index=False, encoding="utf-8")
 print("\n保存完了")

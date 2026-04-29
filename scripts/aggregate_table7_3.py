@@ -63,7 +63,7 @@ ORDER BY 増減 ASC
 
 df1 = duckdb.execute(sql1, [MASTER_PATH, ORIGIN_PATH]).df()
 OUT1_PATH.parent.mkdir(parents=True, exist_ok=True)
-df1.to_csv(OUT1_PATH, index=False)
+df1.to_csv(OUT1_PATH, index=False, encoding="utf-8")
 print(f"出力完了: {OUT1_PATH}")
 print(df1.to_string(index=False))
 print()
@@ -90,6 +90,6 @@ ORDER BY year ASC
 
 df2 = duckdb.execute(sql2, [ORIGIN_PATH]).df()
 OUT2_PATH.parent.mkdir(parents=True, exist_ok=True)
-df2.to_csv(OUT2_PATH, index=False)
+df2.to_csv(OUT2_PATH, index=False, encoding="utf-8")
 print(f"出力完了: {OUT2_PATH}")
 print(df2.to_string(index=False))
