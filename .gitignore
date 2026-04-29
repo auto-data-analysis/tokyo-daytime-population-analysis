@@ -1,4 +1,4 @@
-﻿# Python
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -31,4 +31,3 @@ desktop.ini
 
 # Project specific
 *.log
-.python-version
