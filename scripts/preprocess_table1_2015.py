@@ -8,7 +8,7 @@ from pathlib import Path
 # ============================================================
 
 # --- 定数 ---
-INPUT_PATH = INPUT_PATH = "opendata/raw/平成27年第1表_地域_昼間_常住_男女別人口.csv"
+INPUT_PATH = "opendata/raw/平成27年第1表_地域_昼間_常住_男女別人口.csv"
 VALID_LAYERS = {"0", "1", "2"}
 YEAR = 2015
 
