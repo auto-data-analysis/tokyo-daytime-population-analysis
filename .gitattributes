@@ -1,0 +1,21 @@
+# .gitattributes
+# Normalize line endings across platforms
+
+# Default: auto-detect text files
+* text=auto
+
+# Enforce LF for source and config files
+*.py text eol=lf
+*.toml text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+*.csv text eol=lf
+*.json text eol=lf
+*.gitignore text eol=lf
+
+# Binary files: no conversion
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.svg binary
