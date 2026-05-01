@@ -92,7 +92,5 @@ print(df_diff.to_string())
 # --- 保存 ---
 output_dir = Path("opendata/processed")
 df.to_csv(output_dir / "agg_daytime_population_23ku.csv", index=False, encoding="utf-8")
-df_diff.to_csv(
-    output_dir / "agg_daytime_population_diff.csv", index=False, encoding="utf-8"
-)
+df_diff.to_csv(output_dir / "agg_daytime_population_diff.csv", index=False, encoding="utf-8")
 print("\n保存完了")

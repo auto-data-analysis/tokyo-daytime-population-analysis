@@ -45,9 +45,7 @@ for col in num_cols:
 # → 年度によって変わらない地域の属性情報を切り出す
 # ============================================================
 master_region = df[["地域コード", "地域", "階層", "面積（平方キロメートル）"]].copy()
-master_region = master_region.rename(
-    columns={"面積（平方キロメートル）": "面積_平方km"}
-)
+master_region = master_region.rename(columns={"面積（平方キロメートル）": "面積_平方km"})
 master_region = master_region.reset_index(drop=True)
 
 # ============================================================
@@ -87,7 +85,5 @@ output_dir = Path("opendata/processed")
 output_dir.mkdir(parents=True, exist_ok=True)
 
 master_region.to_csv(output_dir / "master_region.csv", index=False, encoding="utf-8")
-fact_daytime.to_csv(
-    output_dir / "fact_daytime_population_2020.csv", index=False, encoding="utf-8"
-)
+fact_daytime.to_csv(output_dir / "fact_daytime_population_2020.csv", index=False, encoding="utf-8")
 print("\n保存完了: master_region.csv / fact_daytime_population_2020.csv")

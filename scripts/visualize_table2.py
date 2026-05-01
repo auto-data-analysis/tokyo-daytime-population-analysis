@@ -25,15 +25,15 @@ import duckdb
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-AGG_PATH   = 'opendata/processed/agg_status_23ku.csv'
-OUTPUT_DIR = Path('opendata/output')
+AGG_PATH = "opendata/processed/agg_status_23ku.csv"
+OUTPUT_DIR = Path("opendata/output")
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-plt.rcParams['font.family'] = 'Meiryo'
+plt.rcParams["font.family"] = "Meiryo"
 
-COLOR_INCREASE = '#C5D7FB'
-COLOR_DECREASE = '#FFBBBB'
-TEXT_COLOR     = '#595959'
+COLOR_INCREASE = "#C5D7FB"
+COLOR_DECREASE = "#FFBBBB"
+TEXT_COLOR = "#595959"
 
 # ----------------------------------------------------------
 # DuckDBで差分を集計
@@ -68,33 +68,32 @@ df = duckdb.execute(sql, [AGG_PATH]).df()
 # ----------------------------------------------------------
 # グラフ描画
 # ----------------------------------------------------------
-colors = [
-    COLOR_DECREASE if v < 0 else COLOR_INCREASE
-    for v in df['増減_15歳以上']
-]
+colors = [COLOR_DECREASE if v < 0 else COLOR_INCREASE for v in df["増減_15歳以上"]]
 
 fig, ax = plt.subplots(figsize=(9, 7), dpi=150)
-bars = ax.barh(df['地域'], df['増減_15歳以上'], color=colors)
+bars = ax.barh(df["地域"], df["増減_15歳以上"], color=colors)
 
 # 数値ラベル
-max_abs = df['増減_15歳以上'].abs().max()
+max_abs = df["増減_15歳以上"].abs().max()
 for bar in bars:
     width = bar.get_width()
     if width < 0:
         x_pos = max_abs * 0.02
-        ha = 'left'
+        ha = "left"
     else:
         x_pos = width + max_abs * 0.01
-        ha = 'left'
+        ha = "left"
     ax.text(
         x_pos,
         bar.get_y() + bar.get_height() / 2,
-        f'{int(width):+,}',
-        va='center', ha=ha,
-        fontsize=9, color=TEXT_COLOR,
+        f"{int(width):+,}",
+        va="center",
+        ha=ha,
+        fontsize=9,
+        color=TEXT_COLOR,
     )
 
-ax.axvline(x=0, color='lightgray', linewidth=0.8)
+ax.axvline(x=0, color="lightgray", linewidth=0.8)
 
 for spine in ax.spines.values():
     spine.set_visible(False)
@@ -102,21 +101,22 @@ ax.tick_params(left=False, bottom=False, colors=TEXT_COLOR)
 ax.set_xticks([])
 
 ax.set_xlim(
-    df['増減_15歳以上'].min() * 1.3,
-    df['増減_15歳以上'].max() * 1.2,
+    df["増減_15歳以上"].min() * 1.3,
+    df["増減_15歳以上"].max() * 1.2,
 )
 
 ax.set_title(
-    '23区 昼間人口（15歳以上）増減（2015→2020年）',
-    fontsize=12, fontweight='bold', pad=12, color=TEXT_COLOR,
+    "23区 昼間人口（15歳以上）増減（2015→2020年）",
+    fontsize=12,
+    fontweight="bold",
+    pad=12,
+    color=TEXT_COLOR,
 )
 
-ax.text(0.02, 0.02, '■ 減少', transform=ax.transAxes,
-        color=COLOR_DECREASE, fontsize=9)
-ax.text(0.12, 0.02, '■ 増加', transform=ax.transAxes,
-        color=COLOR_INCREASE, fontsize=9)
+ax.text(0.02, 0.02, "■ 減少", transform=ax.transAxes, color=COLOR_DECREASE, fontsize=9)
+ax.text(0.12, 0.02, "■ 増加", transform=ax.transAxes, color=COLOR_INCREASE, fontsize=9)
 
 plt.tight_layout()
-plt.savefig(OUTPUT_DIR / 'status_diff_23ku.png', bbox_inches='tight')
+plt.savefig(OUTPUT_DIR / "status_diff_23ku.png", bbox_inches="tight")
 plt.show()
-print('保存完了: status_diff_23ku.png')
+print("保存完了: status_diff_23ku.png")

@@ -85,7 +85,5 @@ print(f"\n欠損値:\n{fact_daytime.isnull().sum()}")
 output_dir = Path("opendata/processed")
 output_dir.mkdir(parents=True, exist_ok=True)
 
-fact_daytime.to_csv(
-    output_dir / "fact_daytime_population_2015.csv", index=False, encoding="utf-8"
-)
+fact_daytime.to_csv(output_dir / "fact_daytime_population_2015.csv", index=False, encoding="utf-8")
 print("\n保存完了: fact_daytime_population_2015.csv")
